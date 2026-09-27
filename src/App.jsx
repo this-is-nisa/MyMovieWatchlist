@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import { WatchlistProvider } from './context/WatchlistContext'
 import HomePage from './pages/HomePage'
@@ -13,6 +13,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchResultsPage />} />
         <Route path="/movie/:id" element={<MovieDetailPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </WatchlistProvider>
   )
