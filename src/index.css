@@ -160,6 +160,8 @@ h2 { font-size: 1.35rem; }
 
 .status { color: var(--muted); }
 
+.empty-note { font-style: italic; }
+
 .status.error { color: #f0c7c0; }
 
 .watch-list {

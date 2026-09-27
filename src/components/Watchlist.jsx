@@ -37,7 +37,7 @@ export default function Watchlist() {
     <section className="watchlist">
       <div className="section-heading">
         <h2>Watchlist</h2>
-        <p className="muted">Unwatched movies stay on top. Checked movies move to the bottom.</p>
+        <p className="muted">Check the checkbox if you watched the movie!</p>
       </div>
 
       {loading && <p className="status">Loading watchlist…</p>}
@@ -45,7 +45,7 @@ export default function Watchlist() {
       {actionError && <p className="status error">{actionError}</p>}
 
       {!loading && !error && items.length === 0 && (
-        <p className="status">Your watchlist is empty. Search for a movie and add it.</p>
+        <p className="status empty-note">Your watchlist is empty. Search for a movie and add it.</p>
       )}
 
       <ul className="watch-list">
