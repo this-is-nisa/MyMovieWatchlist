@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
+import { useWatchlist } from '../context/WatchlistContext'
 import { getMovie, posterUrl, releaseYear } from '../lib/tmdb'
 
 export default function MovieDetailPage() {
   const { id } = useParams()
   const location = useLocation()
   const fromSearch = location.state?.fromSearch || ''
+  const { isOnWatchlist, addMovie, removeMovie } = useWatchlist()
   const [movie, setMovie] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [actionError, setActionError] = useState('')
+  const [saving, setSaving] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -33,6 +37,22 @@ export default function MovieDetailPage() {
       cancelled = true
     }
   }, [id])
+
+  const onList = movie ? isOnWatchlist(movie.id) : false
+
+  async function onToggleList() {
+    if (!movie) return
+    setSaving(true)
+    setActionError('')
+    try {
+      if (onList) await removeMovie(movie.id)
+      else await addMovie(movie)
+    } catch (err) {
+      setActionError(err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
 
   const poster = posterUrl(movie?.poster_path, 'w500')
   const backdrop = posterUrl(movie?.backdrop_path, 'w1280')
@@ -74,6 +94,11 @@ export default function MovieDetailPage() {
                 </div>
               )}
               <p className="overview">{movie.overview || 'No overview is available for this movie.'}</p>
+              <button type="button" className="button primary" onClick={onToggleList} disabled={saving}>
+                {saving ? 'Saving…' : onList ? 'Remove from Watchlist' : 'Add to Watchlist'}
+              </button>
+              {onList && !saving && <p className="muted inline-note">In watchlist</p>}
+              {actionError && <p className="status error">{actionError}</p>}
             </div>
           </div>
         </>
