@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Proxy movie requests so the TMDB key stays on the server.
+[[redirects]]
+  from = "/api/tmdb/*"
+  to = "/.netlify/functions/tmdb/:splat"
+  status = 200
+
+# React Router handles page paths. This must stay after the API rule.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
