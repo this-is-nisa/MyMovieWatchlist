@@ -2,7 +2,7 @@
 
 A single shared movie watchlist. Search The Movie Database, open a movie, and add it to a list stored in Supabase. Checking an item marks it watched and moves it to the bottom of the list. No accounts or login — everyone uses the same list.
 
-**Deployed app:** _Add your Netlify URL after the one-time deploy._
+**Deployed app:** https://mymoviewatchlist-nisa.netlify.app
 
 **Demo video:** _Add your unlisted YouTube link (3–5 minutes)._
 
