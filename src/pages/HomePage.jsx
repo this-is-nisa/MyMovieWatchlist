@@ -1,8 +1,14 @@
+import { useEffect } from 'react'
+import SearchBar from '../components/SearchBar'
+
 export default function HomePage() {
+  useEffect(() => {
+    document.title = 'MyMovieWatchlist'
+  }, [])
+
   return (
     <main className="page">
-      <h1>MyMovieWatchlist</h1>
-      <p className="muted">Search for a movie, then keep a list of what you want to watch.</p>
+      <SearchBar />
     </main>
   )
 }
