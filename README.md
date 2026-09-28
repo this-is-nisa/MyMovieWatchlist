@@ -37,7 +37,9 @@ MyMovieWatchlist is a movie watchlist webapp where users can track the movies th
 
 ### 3. Local environment
 TMDB_API_KEY=your_tmdb_v3_key
+
 VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+
 VITE_SUPABASE_ANON_KEY=your_anon_key
 
 ### 4. Netlify (deploy once, when the app works locally)
