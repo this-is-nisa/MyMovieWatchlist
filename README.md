@@ -4,7 +4,7 @@ MyMovieWatchlist is a movie watchlist webapp where users can track the movies th
 
 **Deployed web app:** https://mymoviewatchlist-nisa.netlify.app
 
-**Demo video:** _Add your unlisted YouTube link (3–5 minutes)._
+**Demo video:** https://youtu.be/ieVWrIJ_a9Q
 
 ## What the app does
 
